@@ -171,22 +171,19 @@ gem install mail bundler rails >> $log_file 2>&1
 gem install passenger --version $passenger_version >> $log_file 2>&1
 echo "==> done..."
 
-# Installation complete message
+# Install apache-passenger 
+rvmsudo /home/$script_runner/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module
+sudo touch /etc/apache2/mods-available/passenger.load
+sudo echo "LoadModule passenger_module /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version/ext/apache2/mod_passenger.so" >> /etc/apache2/mods-available/passenger.load
+sudo touch /etc/apache2/mods-available/passenger.conf
+sudo echo "PassengerRoot /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version" >> /etc/apache2/mods-available/passenger.conf
+
+# Show installation complete message
 echo -e "\n"
 echo -e "#################################"
 echo -e "### Installation is complete! ###"
 echo -e "#################################"
+echo -e "Please logout/login to access run rails"
 echo -e "\n"
-
-# Do it by yourself message
-echo "To make passenger work with Apache and Rails do the following:"
-echo "  1. run: rvmsudo /home/customer/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module"
-echo "  2. Follow the instructions in the installation process"
-echo "  3. Paste this to your console:"
-echo "    sudo touch /etc/apache2/mods-available/passenger.load"
-echo "    sudo echo 'LoadModule passenger_module /home/customer/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version/ext/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load"
-echo "    sudo touch /etc/apache2/mods-available/passenger.conf"
-echo "    sudo echo 'PassengerRoot /home/customer/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version' >> /etc/apache2/mods-available/passenger.conf"
-echo -e "    sudo echo 'PassengerRuby /home/customer/.rvm/bin/passenger_ruby' >> /etc/apache2/mods-available/passenger.conf\n"
 
 echo -e "\n Thanks!\n-Jakub"
