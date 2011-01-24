@@ -2,7 +2,7 @@
 
 ##Get a full Ruby on Rails stack up very fast on Debian Lenny
 
-###This project is inspired by https://github.com/joshfng/railsready/ by Joshua Frye which refers to Ubuntu Server 10.04 LTS. Check it out!
+This project is inspired by https://github.com/joshfng/railsready/ by Joshua Frye which refers to Ubuntu Server 10.04 LTS. Check it out!
 
 ##Run this on a fresh Debian Lenny install.
 
