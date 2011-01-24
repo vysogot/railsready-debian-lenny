@@ -151,10 +151,13 @@ ruby extconf.rb >> $log_file 2>&1
 make install >> $log_file 2>&1
 echo "==> done..."
 
-# Reconfigure the installation
-echo -e "\n=> Reconfiguring $ruby_version_string installation..."
-rvm install 1.9.2 --reconfigure
-echo "==> done..."
+# Reconfigure the installation 
+			       # seems not to need reconfiguration
+			       # but if problem with readline or openssl occures, do that
+
+# echo -e "\n=> Reconfiguring $ruby_version_string installation..."
+# rvm install 1.9.2 --reconfigure
+# echo "==> done..."
 
 # Make directory for rails apps
 echo -e "\n=> Making directory for Rails apps"
