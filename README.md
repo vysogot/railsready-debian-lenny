@@ -7,7 +7,9 @@ This project is inspired by https://github.com/joshfng/railsready/ by Joshua Fry
 ##Run this on a fresh Debian Lenny install.
 
 ##To run:
-  * `bash < <( wget --no-check-certificate https://github.com/vysogot/railsready/raw/master/railsready-debian-lenny.sh)`
+  * `wget --no-check-certificate https://github.com/vysogot/railsready-debian-lenny/raw/master/railsready-debian-lenny.sh`
+  * `chmod +x railsready-debian-lenny`
+  * `./railsready-debian-lenny`
   * If you want to watch the install log run `tail -f ~/railsready/install.log` in a next shell (ALT+<F2-F6> for non-gui)
 
 ##What this gives you:
