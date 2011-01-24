@@ -1,13 +1,14 @@
 #!/bin/bash
 #
-# Author: Josh Frye <joshfng@gmail.com> 
+# Author: Jakub Godawa <jakub.godawa@gmail.com>
 # Licence: MIT
+#
+
+#
+# Original script for Ubuntu 10.04 LTS: Josh Frye <joshfng@gmail.com>
 #
 # Contributions from: Wayne E. Seguin <wayneeseguin@gmail.com>
 # Contributions from: Ryan McGeary <ryan@mcgeary.org>
-
-#
-# Script for Debian Lenny: Jakub Godawa <jakub.godawa@gmail.com>
 #
 
 system_version="Debian Lenny 5.0x"
@@ -41,11 +42,11 @@ echo "run tail -f $log_file in a new terminal to watch the install"
 
 # Help with sudo privilages
 echo -e "If this is just installed then add a user "$script_runner" to the sudoers.\n"
-echo -e "Do this by yourself:\n"
-echo -e "su\n"
-echo -e "apt-get install sudo\n"
+echo "Do this by yourself:"
+echo "su"
+echo "apt-get install sudo"
 echo -e "echo '$script_runner ALL=(ALL) ALL' >> /etc/sudoers\n"
-echo -e "Is it ready and you want to continue? (y/n): "
+echo "Is it ready and you want to continue? (y/n): "
 read ready
 
 # Ask user if he/she is ready for installation
