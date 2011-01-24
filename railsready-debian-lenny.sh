@@ -174,9 +174,9 @@ echo "==> done..."
 # Install apache-passenger 
 rvmsudo /home/$script_runner/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module
 sudo touch /etc/apache2/mods-available/passenger.load
-sudo echo "LoadModule passenger_module /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version/ext/apache2/mod_passenger.so" >> /etc/apache2/mods-available/passenger.load
+sudo su -c "echo 'LoadModule passenger_module /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version/ext/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load"
 sudo touch /etc/apache2/mods-available/passenger.conf
-sudo echo "PassengerRoot /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version" >> /etc/apache2/mods-available/passenger.conf
+sudo su -c "echo 'PassengerRoot /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version' >> /etc/apache2/mods-available/passenger.conf"
 
 # Show installation complete message
 echo -e "\n"
