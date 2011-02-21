@@ -170,7 +170,7 @@ rvmsudo "rvm_path=/home/$script_runner/.rvm;passenger-install-apache2-module"
 echo "==> done..."
 
 # Install apache-passenger
-rvmsudo /home/$script_runner/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module
+# rvmsudo /home/$script_runner/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module
 sudo touch /etc/apache2/mods-available/passenger.load
 sudo su -c "echo 'LoadModule passenger_module /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version/ext/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load"
 sudo touch /etc/apache2/mods-available/passenger.conf
