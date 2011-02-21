@@ -26,7 +26,7 @@ In order of being installed:
   * Bundler, Passenger, and Rails gems
   * Apache + Phusion Passenger slightly configured
 
-## What you should do by yourself?
+##What you should do by yourself?
 
   * Create new rails appliaction
   * Configure Apache virtual host that points to it

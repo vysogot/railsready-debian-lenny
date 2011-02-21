@@ -158,9 +158,15 @@ source ~/.bashrc
 echo "==> done..."
 
 # Install bundler and rails
-echo -e "\n=> Installing Bundler, Passenger and Rails.."
+echo -e "\n=> Installing Bundler, Passenger and Rails..."
 gem install mail bundler rails >> $log_file 2>&1
 gem install passenger --version $passenger_version >> $log_file 2>&1
+echo "==> done..."
+
+# Prepare sudo installation and show the env
+echo -e "\n=> Preparing apache-passenger installation..."
+rvmsudo bash -c export
+rvmsudo "rvm_path=/home/$script_runner/.rvm;passenger-install-apache2-module"
 echo "==> done..."
 
 # Install apache-passenger
