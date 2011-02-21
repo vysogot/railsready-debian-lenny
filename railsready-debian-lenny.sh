@@ -117,14 +117,9 @@ echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load R
 echo "==>done..."
 
 # Load RVM to the shell
-echo "=> Loading RVM..."
-
-# if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
-if [ $script_runner != "root" ] ; then
-  source ~/.rvm/scripts/rvm
-  source ~/.bashrc
-fi
-
+echo -e "\n=> Loading RVM..."
+source ~/.rvm/scripts/rvm
+source ~/.bashrc
 echo "==> done..."
 
 # Install zlib and openssl to configure them with Ruby
@@ -145,37 +140,30 @@ rvm --default use $ruby_version_string >> $log_file 2>&1
 echo "==> done..."
 
 # Configure Ruby with readline lib
-echo -e "\n=> Configuring Ruby readline lib" 
-cd $HOME/.rvm/src/$ruby_source_dir_name/ext/readline/
+echo -e "\n=> Configuring Ruby readline lib"
+cd ~/.rvm/src/$ruby_source_dir_name/ext/readline/
 ruby extconf.rb >> $log_file 2>&1
 make install >> $log_file 2>&1
 echo "==> done..."
 
-# Reconfigure the installation 
-			       # seems not to need reconfiguration
-			       # but if problem with readline or openssl occures, do that
-
-# echo -e "\n=> Reconfiguring $ruby_version_string installation..."
-# rvm install 1.9.2 --reconfigure
-# echo "==> done..."
-
 # Make directory for rails apps
 echo -e "\n=> Making directory for Rails apps"
-cd && mkdir rails_apps/ && cd rails_apps/
-echo -e "\n==> done..."
+cd && mkdir rails_apps
+echo "==> done..."
 
 # Reload bash
 echo -e "\n=> Reloading bashrc so Ruby and Rubygems are available..."
-source $HOME/.bashrc
+source ~/.rvm/scripts/rvm
+source ~/.bashrc
 echo "==> done..."
 
 # Install bundler and rails
 echo -e "\n=> Installing Bundler, Passenger and Rails.."
-gem install mail bundler rails >> $log_file 2>&1 
+gem install mail bundler rails >> $log_file 2>&1
 gem install passenger --version $passenger_version >> $log_file 2>&1
 echo "==> done..."
 
-# Install apache-passenger 
+# Install apache-passenger
 rvmsudo /home/$script_runner/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module
 sudo touch /etc/apache2/mods-available/passenger.load
 sudo su -c "echo 'LoadModule passenger_module /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version/ext/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load"

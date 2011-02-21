@@ -2,6 +2,8 @@
 
 ##Get a full Ruby on Rails stack up very fast on Debian Lenny
 
+UPDATE: it also works for Debian 6.0x Squeeze
+
 This project is inspired by https://github.com/joshfng/railsready/ by Joshua Frye which refers to Ubuntu Server 10.04 LTS. Check it out!
 
 ##Run this on a fresh Debian Lenny install.
@@ -25,7 +27,7 @@ In order of being installed:
   * Apache + Phusion Passenger slightly configured
 
 ## What you should do by yourself?
-  
+
   * Create new rails appliaction
   * Configure Apache virtual host that points to it
   * Browse the app :)
