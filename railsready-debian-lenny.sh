@@ -111,7 +111,7 @@ echo "==> done..."
 
 # Install RVM
 echo -e "\n=> Installing RVM the Ruby enVironment Manager http://rvm.beginrescueend.com/rvm/install/ \n"
-bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+bash < <( curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
 echo -e "\n=> Setting up RVM to load with new shells..."
 echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
 echo "==>done..."
