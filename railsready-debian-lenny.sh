@@ -11,13 +11,13 @@
 # Contributions from: Ryan McGeary <ryan@mcgeary.org>
 #
 
-system_version="Debian Lenny 5.0x"
+system_version="Debian Lenny 6.0.4"
 
-ruby_version="1.9.2"
-ruby_version_string="1.9.2-p136"
-ruby_source_dir_name="ruby-1.9.2-p136"
+ruby_version="1.9.3"
+ruby_version_string="1.9.3-p0"
+ruby_source_dir_name="ruby-1.9.3-p0"
 
-passenger_version="3.0.2"
+passenger_version="3.0.11"
 
 script_runner=$(whoami)
 log_file=$(cd && pwd)/rails_install.log
@@ -37,7 +37,7 @@ set -e
 # First things first
 cd && touch $log_file
 echo -e "\n"
-echo "!!! This script will update your system! Run on a fresh $system_version install only !!!"
+echo "!!! This script will update your system! Run on a fresh $system_version install!!! (may work with previous versions as well)"
 echo "run tail -f $log_file in a new terminal to watch the install"
 
 # Help with sudo privilages
@@ -94,9 +94,9 @@ echo "==> done..."
 
 # Configure backports and install SQLite3 from backports
 echo -e "\n=> Configuring backports and installing libs needed for sqlite from backports..."
-sudo su -c 'echo deb http://www.backports.org/debian lenny-backports main contrib non-free >> /etc/apt/sources.list'
+sudo su -c 'echo deb http://backports.debian.org/debian-backports squeeze-backports main contrib non-free'
 sudo apt-get -y -V update >> $log_file 2>&1
-sudo apt-get -y -V -t lenny-backports install sqlite3 libsqlite3-dev >> $log_file 2>&1
+sudo apt-get -y -V -t squeeze-backports install sqlite3 libsqlite3-dev >> $log_file 2>&1
 echo "==> done..."
 
 # Install imagemagick
@@ -118,13 +118,13 @@ echo "==>done..."
 
 # Load RVM to the shell
 echo -e "\n=> Loading RVM..."
-source ~/.rvm/scripts/rvm
+source /usr/local/rvm/bin/rvm
 source ~/.bashrc
 echo "==> done..."
 
 # Install zlib and openssl to configure them with Ruby
 echo -e "\n=> Installing packages (zlib, openssl) to configure Ruby (this will take awhile)..."
-rvm package install zlib openssl >> $log_file 2>&1
+rvm pkg install zlib openssl >> $log_file 2>&1
 echo -r "\n==> done..."
 
 # Install specific Ruby version
