@@ -111,10 +111,10 @@ echo "==> done..."
 
 # Install RVM
 echo -e "\n=> Installing RVM the Ruby enVironment Manager http://rvm.beginrescueend.com/rvm/install/ \n"
-bash < <( curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
+bash < <( curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer ) >> $log_file 2>&1
 echo -e "\n=> Setting up RVM to load with new shells..."
 echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
-echo "==>done..."
+echo "==> done..."
 
 # Load RVM to the shell
 echo -e "\n=> Loading RVM..."
@@ -123,10 +123,10 @@ source ~/.bashrc
 echo "==> done..."
 
 # Install specific Ruby version
-echo -e "\n=> Installing $ruby_version_string with zlib and openssl(this will take awhile)..."
+echo -e "\n=> Installing $ruby_version_string..."
 echo -e "=> More information about installing Rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
 rvm install $ruby_version_string
-echo -e "\n==> done..."
+echo -e "==> done..."
 
 # Set new Ruby as a default interpreter
 echo -e "\n=> Using $ruby_version_string and setting it as default for new shells..."
