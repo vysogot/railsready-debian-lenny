@@ -14,8 +14,8 @@
 system_version="Debian Lenny 6.0.4"
 
 ruby_version="1.9.3"
-ruby_version_string="1.9.3-p0"
-ruby_source_dir_name="ruby-1.9.3-p0"
+ruby_version_string="1.9.3-p125"
+ruby_source_dir_name="ruby-1.9.3-p125"
 
 passenger_version="3.0.11"
 
@@ -118,32 +118,20 @@ echo "==>done..."
 
 # Load RVM to the shell
 echo -e "\n=> Loading RVM..."
-source /usr/local/rvm/bin/rvm
+source ~/.rvm/bin/rvm
 source ~/.bashrc
 echo "==> done..."
-
-# Install zlib and openssl to configure them with Ruby
-echo -e "\n=> Installing packages (zlib, openssl) to configure Ruby (this will take awhile)..."
-rvm pkg install zlib openssl >> $log_file 2>&1
-echo -r "\n==> done..."
 
 # Install specific Ruby version
 echo -e "\n=> Installing $ruby_version_string with zlib and openssl(this will take awhile)..."
 echo -e "=> More information about installing Rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
-rvm install $ruby_version_string -C --with-zlib-dir=$HOME/.rvm/usr --with-openssl-dir=$HOME/.rvm/usr
+rvm install $ruby_version_string
 echo -e "\n==> done..."
 
 # Set new Ruby as a default interpreter
 echo -e "\n=> Using $ruby_version_string and setting it as default for new shells..."
 echo "=> More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
-rvm --default use $ruby_version_string >> $log_file 2>&1
-echo "==> done..."
-
-# Configure Ruby with readline lib
-echo -e "\n=> Configuring Ruby readline lib"
-cd ~/.rvm/src/$ruby_source_dir_name/ext/readline/
-ruby extconf.rb >> $log_file 2>&1
-make install >> $log_file 2>&1
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" && rvm --default use $ruby_version_string >> $log_file 2>&1
 echo "==> done..."
 
 # Make directory for rails apps
@@ -170,7 +158,7 @@ rvmsudo "rvm_path=/home/$script_runner/.rvm;passenger-install-apache2-module"
 echo "==> done..."
 
 # Install apache-passenger
-# rvmsudo /home/$script_runner/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module
+rvmsudo /home/$script_runner/.rvm/gems/$ruby_source_dir_name/bin/passenger-install-apache2-module
 sudo touch /etc/apache2/mods-available/passenger.load
 sudo su -c "echo 'LoadModule passenger_module /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version/ext/apache2/mod_passenger.so' >> /etc/apache2/mods-available/passenger.load"
 sudo touch /etc/apache2/mods-available/passenger.conf
