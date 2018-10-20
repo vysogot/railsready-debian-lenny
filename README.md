@@ -1,18 +1,20 @@
-#Rails Ready for Debian Lenny
+Quite outdated
 
-##Get a full Ruby on Rails stack up very fast on Debian Lenny
+# Rails Ready for Debian Lenny
+
+## Get a full Ruby on Rails stack up very fast on Debian Lenny
 
 UPDATE: it also works for Debian 6.0x Squeeze
 
 This project is inspired by https://github.com/joshfng/railsready/ by Joshua Frye which refers to Ubuntu Server 10.04 LTS. Check it out!
 
-##Run this on a fresh Debian Lenny install.
+## Run this on a fresh Debian Lenny install.
 
-##To run
+## To run
   * `wget --no-check-certificate https://github.com/vysogot/railsready-debian-lenny/raw/master/railsready-debian-lenny.sh && bash railsready-debian-lenny.sh`
   * If you want to watch the install log run `tail -f ~/rails_install.log` in a next shell (ALT+<F2-F6> for non-gui)
 
-##What this gives you?
+## What this gives you?
 
 In order of being installed:
 
@@ -26,7 +28,7 @@ In order of being installed:
   * Bundler, Passenger, and Rails gems
   * Apache + Phusion Passenger slightly configured
 
-##What you should do by yourself?
+## What you should do by yourself?
 
   * Create new rails appliaction
   * Configure Apache virtual host that points to it
